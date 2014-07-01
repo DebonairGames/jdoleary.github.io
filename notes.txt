@@ -1,0 +1,54 @@
+6/13/14
+Commit 1:
+Removed sight limit for guards (ray casting will later keep them from seeing through walls
+Added wall collisions
+Commit 2:
+Grid
+Grid Images
+bug at pixel 320 320 colliding
+
+6/14/14
+Added a break statement which fixed a bug where hero would slow down too much if he tried
+to drag a dead body when more than one dead body was around.
+Changed click listener to on mouse down for more responsive shooting
+
+major: PATHFINDING
+minor: made screen bigger
+increase sprite speed
+new map for pathing
+commented out guard agro to test path finding
+guards now move only when they have a path
+when hero shoots gun, path is created from guards to hero and they go to where they 
+heard the shot.
+
+//
+guards can become alerted, and stop moving when they see you.
+bug: fixed a weird issue when walking into a guard who notices you sets hero back to 0,0.  This must have something to do with javascript.
+  I called guards[i].target = hero; rather than guards[i].target = {x: hero.x, y: hero.y}; I think target became a pointer for hero and then
+   target.x and .y got set to null or 0 or something.
+Guards rotate to follow hero with sight.
+Sprites rotate to face target.
+
+6/16/14
+Added Mr. Doob's Stats.js
+Added raycasting, currently debug dots are on
+
+6/20/14
+Couldn't get the following to work:
+  //test blood trail
+    var painting = new PIXI.Sprite(img_blank);
+    painting.texture.removeAllEventListeners();
+    painting.texture.frame = new PIXI.Rectangle(0,0,grid.width*grid.cell_size,grid.height*grid.cell_size);
+    //painting.cacheasbitmap = true;
+    var follower = new PIXI.Sprite(img_money);
+    painting.addChild(follower);
+    stage.addChild(painting);
+    
+    function snap(){
+        var snapshot = painting.generateTexture();
+        painting.setTexture(snapshot);
+    }
+    //end test blood trail
+    
+6/23/14
+Blood trail may cause serious frame rate drops
